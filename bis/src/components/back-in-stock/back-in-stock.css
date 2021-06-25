@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+*{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.collapse{
+  text-decoration: none;
+  color:rgb(0, 124, 140);
+  display: contents;
+}
+
+.collapse:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.display{
+  opacity: 1;
+  color: rgb(85, 85, 85);
+}
+
+.hide{
+  display: none;
+  /* color: blue; */
+}
+
+.show{
+  display: block;
+  /* color: red; */
+}
+
+.arrow-up{
+  width: 10px;
+  height: auto;
+  filter: invert(47%) sepia(97%) saturate(2943%) hue-rotate(164deg) brightness(99%) contrast(101%);;
+}
