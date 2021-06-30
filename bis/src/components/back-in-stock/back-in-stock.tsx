@@ -22,7 +22,7 @@ export class BackInStock {
   componentWillLoad(){
     fetch(`http://desktop-aqbb5k6:9090/ws/rest/products/v2/Products/${this.partNumber}/?view=${this.view}`, {
       headers:{
-        "Authorization": "Basic dHJhaW5pbmdyaWdvYmVydG9xdWlyb3otMU5HMUlIOjQzMGQzYzczLTRmODAtNDg2Zi1hNjZhLWMwY2RlMTU1MzlmNA=="
+        "Authorization": "Basic Y2hhbmdlIG1lIHBsZWFzZSE="
       }
     })
       .then(response =>{
