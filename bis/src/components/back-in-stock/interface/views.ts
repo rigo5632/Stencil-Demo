@@ -1,22 +1,19 @@
-interface DetailedView{
-    day: number,
-    month: number,
-    year: number,
-    units: number
+interface APIResponse {
+    "Estimated Shipment": EstimatedShipment[];
+    "Estimated Shipdate": string;
+    inventory: string;
+    error: string;
 }
-interface GenericView{
-    day: number,
-    month: number,
-    year: number
-}
-interface HiddenView{
-    inventory: number
-}
-interface ErrorView{
-    errorMessage: string
-}
-interface ProductError{
-    errorMessage: string
+interface EstimatedShipment {
+    date:  string;
+    units: string;
 }
 
-export { DetailedView, GenericView, HiddenView, ErrorView, ProductError };
+const defaultResponse:APIResponse = {
+    "Estimated Shipment": [{ date: "0000-00-00", units: '0' }],
+    "Estimated Shipdate": "0000-00-00",
+    inventory: '0',
+    error: ''
+} 
+
+export { APIResponse, defaultResponse };
