@@ -19,7 +19,7 @@ export class BackInStock {
 
 
   async fetchProductAPI(){
-    const response = await axios.get(`http://localhost:8080/product/${this.partNumber}/?view=${this.view}`);
+    const response = await axios.get(`/product/${this.partNumber}/?view=${this.view}`);
     this.apiInformation = response.data;
   }
 
