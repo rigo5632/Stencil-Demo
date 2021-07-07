@@ -14,6 +14,8 @@ import org.springframework.http.HttpMethod;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.util.Base64;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @SpringBootApplication
 @RestController
 public class BackinstockApplication {
@@ -22,6 +24,7 @@ public class BackinstockApplication {
 		SpringApplication.run(BackinstockApplication.class, args);
 	}
 
+	@CrossOrigin(origins = "*")
 	@GetMapping(value = "/product/{partNumber}/")
 	public String SpringAPI(@RequestParam(value="view") String view, @PathVariable String partNumber)throws Exception{
 		try{

@@ -20,44 +20,50 @@ export class BackInStock {
   @State() showContent: boolean = false;
 
   componentWillLoad(){
-    fetch(`http://desktop-aqbb5k6:9090/ws/rest/products/v2/Products/${this.partNumber}/?view=${this.view}`, {
-      headers:{
-        "Authorization": "Basic Y2hhbmdlIG1lIHBsZWFzZSE="
-      }
-    })
+    fetch(`http://localhost:8080/product/${this.partNumber}/?view=${this.view}`)
       .then(response =>{
-        return(response.json())
+        return response.json()
       }).then(jsonResponse =>{
-        if(jsonResponse["error"]){
-          this.error= jsonResponse["error"]
-        }
-        else if(this.view === "d"){
-          let shipments = jsonResponse["Estimated Shipment"]
-          this.detailedInformation = shipments.map(shipment =>{
-            let date = shipment["date"].split('-');
-            return({
-              day: parseInt(date[1]),
-              month: parseInt(date[2]),
-              year: parseInt(date[0]),
-              units: parseInt(shipment["units"])
-            });
-          });
-        }else if(this.view === "g"){
-          let shipdate = jsonResponse["Estimated Shipdate"]
-          let date = shipdate.split('-');
-          this.genericInformation = {
-            day: parseInt(date[1]),
-            month: parseInt(date[2]),
-            year: parseInt(date[0])
-          }
-        }else if(this.view == "h"){
-          this.hiddenInformation = {
-            inventory: jsonResponse['inventory']
-          }
-        }
-        // console.log(this.detailedInformation);
-        // console.log(this.error);
+        console.log(jsonResponse)
       })
+    // fetch(`http://desktop-aqbb5k6:9090/ws/rest/products/v2/Products/${this.partNumber}/?view=${this.view}`, {
+    //   headers:{
+    //     "Authorization": "Basic Y2hhbmdlIG1lIHBsZWFzZSE="
+    //   }
+    // })
+    //   .then(response =>{
+    //     return(response.json())
+    //   }).then(jsonResponse =>{
+    //     if(jsonResponse["error"]){
+    //       this.error= jsonResponse["error"]
+    //     }
+    //     else if(this.view === "d"){
+    //       let shipments = jsonResponse["Estimated Shipment"]
+    //       this.detailedInformation = shipments.map(shipment =>{
+    //         let date = shipment["date"].split('-');
+    //         return({
+    //           day: parseInt(date[1]),
+    //           month: parseInt(date[2]),
+    //           year: parseInt(date[0]),
+    //           units: parseInt(shipment["units"])
+    //         });
+    //       });
+    //     }else if(this.view === "g"){
+    //       let shipdate = jsonResponse["Estimated Shipdate"]
+    //       let date = shipdate.split('-');
+    //       this.genericInformation = {
+    //         day: parseInt(date[1]),
+    //         month: parseInt(date[2]),
+    //         year: parseInt(date[0])
+    //       }
+    //     }else if(this.view == "h"){
+    //       this.hiddenInformation = {
+    //         inventory: jsonResponse['inventory']
+    //       }
+    //     }
+    //     // console.log(this.detailedInformation);
+    //     // console.log(this.error);
+    //   })
   }
 
   render() {
