@@ -13,7 +13,7 @@ import axios from 'axios';
 
 export class BackInStock {
   @Prop() partNumber:string;
-  @Prop() view?: string = "d";
+  @Prop() view?: string = "h";
   @State() apiInformation: APIResponse = defaultResponse;
   @State() showContent: boolean = false;
 
@@ -29,7 +29,8 @@ export class BackInStock {
 
   render() {
     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Nov", "Dec"];
-    let displayContent;
+    let displayContent:HTMLSpanElement[];
+    
     if(this.view === "d"){
       displayContent = this.apiInformation['Estimated Shipment'].map(shipment => {
         const date = shipment.date.split('-');
